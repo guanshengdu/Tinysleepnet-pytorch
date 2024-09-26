@@ -53,6 +53,8 @@ if __name__ == '__main__':
     parser.add_argument("--n_epochs", type=int, default=200)
     args = parser.parse_args()
 
+    print(f"args is : {args}")
+
     run(
         args=args,
         db=args.db,
