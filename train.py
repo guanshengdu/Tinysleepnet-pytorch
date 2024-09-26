@@ -265,6 +265,8 @@ if __name__ == "__main__":
     parser.set_defaults(restart=False)
     args = parser.parse_args()
 
+    print(f"args in train.py is : {args}")
+
     train(
         config_file=args.config_file,
         fold_idx=args.fold_idx,
