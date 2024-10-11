@@ -161,8 +161,7 @@ echo $TMPDIR   # /cfs/earth/scratch/dugua001/tmp
 
 ## Load Conda environments
 
-## HPC using 
-
+## Using HPC
 
 Yes, you’re right. HPC systems typically require you to load Conda environments differently than on your local machine because HPC environments often use **modules** for software management. These modules allow different versions of software to coexist on the same system, making it necessary to load the appropriate environment management system, such as Conda.
 
