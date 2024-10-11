@@ -4,10 +4,38 @@ Read HPC wiki.
 
 Upload sleep-cassette sleeping data to the data folder.
 
-### Load Conda software environment on HPC.
+## Connect to HPC
 
 ```bash
-module load gcc/9.4.0-pe5.34 miniconda3/4.12.0 lsfm-init-miniconda/1.0.0
+ssh dugua001@login-rhel7.hpc.zhaw.ch
+```
+OR
+```bash
+ssh dugua001@login-rhel8.hpc.zhaw.ch
+```
+
+### Home directory on HPC
+```
+/net/home/dugua001/
+```
+### Working directory on HPC
+```
+/cfs/earth/scratch/dugua001/
+```
+
+
+## Set Git
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+```
+
+## Load Conda software environment on HPC.
+
+```bash
+module load gcc/9.4.0-pe5.34 miniconda3/4.12.0 lsfm-init-miniconda/1.0.0 # USS/2020: 4.8.2 (GCC 7.3.0)
+module load gcc/7.3.0 miniconda3/4.8.2 lsfm-init-miniconda/1.0.0 # Load in USS/2022: 4.12.0 (GCC 9.4.0-pe5.34)
 ```
 ## Add '~/.condarc' file to the home directory.
 
@@ -33,7 +61,7 @@ auto_activate_base: false
 
 ```
 
-<details>
+## Explanation of the `.condarc` file:
 <summary>details of '.condarc'</summary>
 The recommendation to configure Conda using a `.condarc` file, especially with user-specific settings in the HPC environment, provides several important benefits. Let me explain why this configuration is helpful and why you should like this approach:
 
@@ -81,10 +109,10 @@ By configuring Conda through the `.condarc` file, you gain greater control over 
 This configuration is well-suited for HPC environments where disk space and performance optimizations are critical, and where user-specific customizations help ensure smoother, conflict-free workflows.
 
 Let me know if you have more questions or need further clarification!
-</details>
 
 
-## Create a new Conda environment for Tinysleepnet.
+
+## Create a Conda environment for Tinysleepnet.
 
 ```bash
 conda create -n tinysleepnet_env python=3.6
@@ -98,16 +126,42 @@ conda install mne=0.18
 conda install wget
 conda install torch=1.6
 conda install tensorboard=2.5
-conda install torchboardX=0.6
+conda install tensorboardX=2.2
 
 ```
 
+```bash
+conda create -n tinysleepnet_env2 python=3.6
+pip install numpy==1.16 pandas==0.24 scikit-learn==0.20 scipy==1.2 matplotlib==3.0 pyEDFlib==0.1.38 mne==0.18 wget torch==1.6 tensorboard==2.5 tensorboardX==2.2
+```
+### Set a /tmp directory during the installation of the packages.
+
+The HPC returns 'out of space' error when installing the package 'torch'. The '/tmp' directory is used to store the temporary files during the installation of the packages. I set a new directory '/cfs/earth/scratch/dugua001/tmp' to store the temporary files during the installation of the packages.
+
+Create a new directory '/cfs/earth/scratch/dugua001/tmp' if it does not exist:
+```bash
+mkdir /cfs/earth/scratch/dugua001/tmp
+```
+
+Add the following line to '.bashrc':
+```
+export TMPDIR=/cfs/earth/scratch/$USER/tmp
+```
+
+Apply the changes made to '.bashrc':
+```bash
+source ~/.bashrc
+```
+
+Test the new '/tmp' directory:
+```bash
+echo $TMPDIR   # /cfs/earth/scratch/dugua001/tmp
+```
 
 
 ## Load Conda environments
 
-<details>
-<summary>Click to expand</summary>
+## HPC using 
 
 
 Yes, you’re right. HPC systems typically require you to load Conda environments differently than on your local machine because HPC environments often use **modules** for software management. These modules allow different versions of software to coexist on the same system, making it necessary to load the appropriate environment management system, such as Conda.
@@ -225,9 +279,7 @@ This ensures that all environments are stored in `/home/your_username/conda_envs
 - Submit the job with Slurm, ensuring that the Conda environment is activated in your job script.
 
 Let me know if you need any more details or clarification!
-</details>
 
-<details>
 
 ## Load the Conda environment and install the required packages in the HPC system.
 
@@ -360,5 +412,5 @@ conda deactivate
    - Submit the job using `sbatch`.
 
 By following these steps, you can effectively use your Conda environment on an HPC cluster, both interactively and through job submission. Let me know if you need more details or run into any issues!
-</details>
+
 
