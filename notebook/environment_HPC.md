@@ -134,34 +134,33 @@ conda install tensorboardX=2.2
 conda create -n tinysleepnet_env2 python=3.6
 pip install numpy==1.16 pandas==0.24 scikit-learn==0.20 scipy==1.2 matplotlib==3.0 pyEDFlib==0.1.38 mne==0.18 wget torch==1.6 tensorboard==2.5 tensorboardX==2.2
 ```
-### Set a /tmp directory during the installation of the packages.
+### Set a `/tmp` directory during the installation of the packages.
 
-The HPC returns 'out of space' error when installing the package 'torch'. The '/tmp' directory is used to store the temporary files during the installation of the packages. I set a new directory '/cfs/earth/scratch/dugua001/tmp' to store the temporary files during the installation of the packages.
+The HPC returns `out of space` error when installing the package `torch`. The `/tmp` directory is used to store the temporary files during the installation of the packages. I set a new directory `/cfs/earth/scratch/dugua001/tmp` to store the temporary files during the installation of the packages.
 
-Create a new directory '/cfs/earth/scratch/dugua001/tmp' if it does not exist:
+Create a new directory `/cfs/earth/scratch/dugua001/tmp` if it does not exist:
 ```bash
 mkdir /cfs/earth/scratch/dugua001/tmp
 ```
 
-Add the following line to '.bashrc':
+Add the following line to `.bashrc`:
 ```
 export TMPDIR=/cfs/earth/scratch/$USER/tmp
 ```
 
-Apply the changes made to '.bashrc':
+Apply the changes made to `.bashrc`:
 ```bash
 source ~/.bashrc
 ```
 
-Test the new '/tmp' directory:
+Test the new `/tmp` directory:
 ```bash
 echo $TMPDIR   # /cfs/earth/scratch/dugua001/tmp
 ```
 
 
-## Load Conda environments
 
-## Using HPC
+## Using HPC, from ChatGPT
 
 Yes, you’re right. HPC systems typically require you to load Conda environments differently than on your local machine because HPC environments often use **modules** for software management. These modules allow different versions of software to coexist on the same system, making it necessary to load the appropriate environment management system, such as Conda.
 

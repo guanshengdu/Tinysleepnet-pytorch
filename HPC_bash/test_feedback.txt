@@ -1,0 +1,3 @@
+Job ran successfully!
+Numpy array shape: (100, 10)
+MNE version: 0.18.0
