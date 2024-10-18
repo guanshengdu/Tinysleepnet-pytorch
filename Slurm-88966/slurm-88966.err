@@ -1,0 +1,73 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "gcc/9.4.0-pe5.34"
+   Try: "module spider gcc/9.4.0-pe5.34" to see how to load the module(s).
+
+
+
+[36m[INFO ][0m Load generated SIDs from sleepedf.txt
+[36m[INFO ][0m SIDs (20): [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
+[36m[INFO ][0m Train SIDs: (17) [ 2  3  4  5  7  8  9 10 11 12 13 14 15 16 17 18 19]
+[36m[INFO ][0m Valid SIDs: (2) [1 6]
+[36m[INFO ][0m Test SIDs: (1) [0]
+[36m[INFO ][0m Training set (n_night_sleeps=33)
+[36m[INFO ][0m (1025, 3000, 1, 1)
+[36m[INFO ][0m (1009, 3000, 1, 1)
+[36m[INFO ][0m (911, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1235, 3000, 1, 1)
+[36m[INFO ][0m (1200, 3000, 1, 1)
+[36m[INFO ][0m (1246, 3000, 1, 1)
+[36m[INFO ][0m (672, 3000, 1, 1)
+[36m[INFO ][0m (1273, 3000, 1, 1)
+[36m[INFO ][0m (976, 3000, 1, 1)
+[36m[INFO ][0m (1054, 3000, 1, 1)
+[36m[INFO ][0m (1134, 3000, 1, 1)
+[36m[INFO ][0m (1207, 3000, 1, 1)
+[36m[INFO ][0m (1132, 3000, 1, 1)
+[36m[INFO ][0m (1104, 3000, 1, 1)
+[36m[INFO ][0m (1092, 3000, 1, 1)
+[36m[INFO ][0m (928, 3000, 1, 1)
+[36m[INFO ][0m (802, 3000, 1, 1)
+[36m[INFO ][0m (1783, 3000, 1, 1)
+[36m[INFO ][0m (977, 3000, 1, 1)
+[36m[INFO ][0m (1028, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1004, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1762, 3000, 1, 1)
+[36m[INFO ][0m (1144, 3000, 1, 1)
+[36m[INFO ][0m (1003, 3000, 1, 1)
+[36m[INFO ][0m (1773, 3000, 1, 1)
+[36m[INFO ][0m (1002, 3000, 1, 1)
+[36m[INFO ][0m (920, 3000, 1, 1)
+[36m[INFO ][0m (964, 3000, 1, 1)
+[36m[INFO ][0m (1535, 3000, 1, 1)
+[36m[INFO ][0m (1274, 3000, 1, 1)
+[36m[INFO ][0m W: 8093
+[36m[INFO ][0m N1: 2340
+[36m[INFO ][0m N2: 15130
+[36m[INFO ][0m N3: 4720
+[36m[INFO ][0m REM: 6742
+[36m[INFO ][0m Validation set (n_night_sleeps=4)
+[36m[INFO ][0m (2265, 3000, 1, 1)
+[36m[INFO ][0m (1103, 3000, 1, 1)
+[36m[INFO ][0m (843, 3000, 1, 1)
+[36m[INFO ][0m (1016, 3000, 1, 1)
+[36m[INFO ][0m W: 1733
+[36m[INFO ][0m N1: 347
+[36m[INFO ][0m N2: 2046
+[36m[INFO ][0m N3: 466
+[36m[INFO ][0m REM: 635
+[36m[INFO ][0m Test set (n_night_sleeps=2)
+[36m[INFO ][0m (1127, 3000, 1, 1)
+[36m[INFO ][0m (841, 3000, 1, 1)
+[36m[INFO ][0m W: 371
+[36m[INFO ][0m N1: 117
+[36m[INFO ][0m N2: 623
+[36m[INFO ][0m N3: 517
+[36m[INFO ][0m REM: 340
+[36m[INFO ][0m   Weighted cross entropy: True
+[36m[INFO ][0m   Weighted cross entropy: [1.  1.5 1.  1.  1. ]
+[36m[INFO ][0m using device 0
+/cm/local/apps/slurm/var/spool/job88966/slurm_script: line 20: 1169772 Killed                  python trainer.py --db sleepedf --gpu 0 --from_fold 0 --to_fold 19
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=88966.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

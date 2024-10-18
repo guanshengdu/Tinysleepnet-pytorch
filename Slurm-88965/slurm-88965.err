@@ -1,0 +1,14 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "gcc/9.4.0-pe5.34"
+   Try: "module spider gcc/9.4.0-pe5.34" to see how to load the module(s).
+
+
+
+Traceback (most recent call last):
+  File "trainer.py", line 8, in <module>
+    from train import train
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/train.py", line 10, in <module>
+    from model import Model
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/model.py", line 9, in <module>
+    from tensorboardX import SummaryWriter
+ModuleNotFoundError: No module named 'tensorboardX'

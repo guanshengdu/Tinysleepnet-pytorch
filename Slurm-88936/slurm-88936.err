@@ -1,0 +1,195 @@
+
+Modules based on Lua: Version 8.4  2020-07-31 12:25 -05:00
+    by Robert McLay mclay@tacc.utexas.edu
+
+module [options] sub-command [args ...]
+
+Help sub-commands:
+------------------
+  help                              prints this message
+  help                module [...]  print help message from module(s)
+
+Loading/Unloading sub-commands:
+-------------------------------
+  load | add          module [...]  load module(s)
+  try-load | try-add  module [...]  Add module(s), do not complain if not
+                                    found
+  del | unload        module [...]  Remove module(s), do not complain if not
+                                    found
+  swap | sw | switch  m1 m2         unload m1 and load m2
+  purge                             unload all modules
+  refresh                           reload aliases from current list of
+                                    modules.
+  update                            reload all currently loaded modules.
+
+Listing / Searching sub-commands:
+---------------------------------
+  list                              List loaded modules
+  list                s1 s2 ...     List loaded modules that match the
+                                    pattern
+  avail | av                        List available modules
+  avail | av          string        List available modules that contain
+                                    "string".
+  spider                            List all possible modules
+  spider              module        List all possible version of that module
+                                    file
+  spider              string        List all module that contain the
+                                    "string".
+  spider              name/version  Detailed information about that version
+                                    of the module.
+  whatis              module        Print whatis information about module
+  keyword | key       string        Search all name and whatis that contain
+                                    "string".
+
+Searching with Lmod:
+--------------------
+  All searching (spider, list, avail, keyword) support regular expressions:
+  
+
+  -r spider           '^p'          Finds all the modules that start with
+                                    `p' or `P'
+  -r spider           mpi           Finds all modules that have "mpi" in
+                                    their name.
+  -r spider           'mpi$         Finds all modules that end with "mpi" in
+                                    their name.
+
+Handling a collection of modules:
+--------------------------------
+  save | s                          Save the current list of modules to a
+                                    user defined "default" collection.
+  save | s            name          Save the current list of modules to
+                                    "name" collection.
+  reset                             The same as "restore system"
+  restore | r                       Restore modules from the user's
+                                    "default" or system default.
+  restore | r         name          Restore modules from "name" collection.
+  restore             system        Restore module state to system defaults.
+  savelist                          List of saved collections.
+  describe | mcc      name          Describe the contents of a module
+                                    collection.
+  disable             name          Disable (i.e. remove) a collection.
+
+Deprecated commands:
+--------------------
+  getdefault          [name]        load name collection of modules or
+                                    user's "default" if no name given.
+                                    ===> Use "restore" instead <====
+  setdefault          [name]        Save current list of modules to name if
+                                    given, otherwise save as the default
+                                    list for you the user.
+                                    ===> Use "save" instead. <====
+
+Miscellaneous sub-commands:
+---------------------------
+  is-loaded           modulefile    return a true status if module is loaded
+  is-avail            modulefile    return a true status if module can be
+                                    loaded
+  show                modulefile    show the commands in the module file.
+  use [-a]            path          Prepend or Append path to MODULEPATH.
+  unuse               path          remove path from MODULEPATH.
+  tablelist                         output list of active modules as a lua
+                                    table.
+
+Important Environment Variables:
+--------------------------------
+  LMOD_COLORIZE                     If defined to be "YES" then Lmod prints
+                                    properties and warning in color.
+
+    --------------------------------------------------------------------------
+
+Lmod Web Sites
+
+  Documentation:    http://lmod.readthedocs.org
+  Github:           https://github.com/TACC/Lmod
+  Sourceforge:      https://lmod.sf.net
+  TACC Homepage:    https://www.tacc.utexas.edu/research-development/tacc-projects/lmod
+
+  To report a bug please read http://lmod.readthedocs.io/en/latest/075_bug_reporting.html
+    --------------------------------------------------------------------------
+
+
+/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env2/lib/python3.6/site-packages/sklearn/externals/joblib/externals/cloudpickle/cloudpickle.py:47: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+[36m[INFO ][0m Load generated SIDs from sleepedf.txt
+[36m[INFO ][0m SIDs (20): [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
+[36m[INFO ][0m Train SIDs: (17) [ 2  3  4  5  7  8  9 10 11 12 13 14 15 16 17 18 19]
+[36m[INFO ][0m Valid SIDs: (2) [1 6]
+[36m[INFO ][0m Test SIDs: (1) [0]
+[36m[INFO ][0m Training set (n_night_sleeps=33)
+[36m[INFO ][0m (1025, 3000, 1, 1)
+[36m[INFO ][0m (1009, 3000, 1, 1)
+[36m[INFO ][0m (911, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1235, 3000, 1, 1)
+[36m[INFO ][0m (1200, 3000, 1, 1)
+[36m[INFO ][0m (1246, 3000, 1, 1)
+[36m[INFO ][0m (672, 3000, 1, 1)
+[36m[INFO ][0m (1273, 3000, 1, 1)
+[36m[INFO ][0m (976, 3000, 1, 1)
+[36m[INFO ][0m (1054, 3000, 1, 1)
+[36m[INFO ][0m (1134, 3000, 1, 1)
+[36m[INFO ][0m (1207, 3000, 1, 1)
+[36m[INFO ][0m (1132, 3000, 1, 1)
+[36m[INFO ][0m (1104, 3000, 1, 1)
+[36m[INFO ][0m (1092, 3000, 1, 1)
+[36m[INFO ][0m (928, 3000, 1, 1)
+[36m[INFO ][0m (802, 3000, 1, 1)
+[36m[INFO ][0m (1783, 3000, 1, 1)
+[36m[INFO ][0m (977, 3000, 1, 1)
+[36m[INFO ][0m (1028, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1004, 3000, 1, 1)
+[36m[INFO ][0m (952, 3000, 1, 1)
+[36m[INFO ][0m (1762, 3000, 1, 1)
+[36m[INFO ][0m (1144, 3000, 1, 1)
+[36m[INFO ][0m (1003, 3000, 1, 1)
+[36m[INFO ][0m (1773, 3000, 1, 1)
+[36m[INFO ][0m (1002, 3000, 1, 1)
+[36m[INFO ][0m (920, 3000, 1, 1)
+[36m[INFO ][0m (964, 3000, 1, 1)
+[36m[INFO ][0m (1535, 3000, 1, 1)
+[36m[INFO ][0m (1274, 3000, 1, 1)
+[36m[INFO ][0m W: 8093
+[36m[INFO ][0m N1: 2340
+[36m[INFO ][0m N2: 15130
+[36m[INFO ][0m N3: 4720
+[36m[INFO ][0m REM: 6742
+[36m[INFO ][0m Validation set (n_night_sleeps=4)
+[36m[INFO ][0m (2265, 3000, 1, 1)
+[36m[INFO ][0m (1103, 3000, 1, 1)
+[36m[INFO ][0m (843, 3000, 1, 1)
+[36m[INFO ][0m (1016, 3000, 1, 1)
+[36m[INFO ][0m W: 1733
+[36m[INFO ][0m N1: 347
+[36m[INFO ][0m N2: 2046
+[36m[INFO ][0m N3: 466
+[36m[INFO ][0m REM: 635
+[36m[INFO ][0m Test set (n_night_sleeps=2)
+[36m[INFO ][0m (1127, 3000, 1, 1)
+[36m[INFO ][0m (841, 3000, 1, 1)
+[36m[INFO ][0m W: 371
+[36m[INFO ][0m N1: 117
+[36m[INFO ][0m N2: 623
+[36m[INFO ][0m N3: 517
+[36m[INFO ][0m REM: 340
+[36m[INFO ][0m   Weighted cross entropy: True
+[36m[INFO ][0m   Weighted cross entropy: [1.  1.5 1.  1.  1. ]
+[36m[INFO ][0m using device 0
+Traceback (most recent call last):
+  File "trainer.py", line 65, in <module>
+    random_seed=args.random_seed,
+  File "trainer.py", line 36, in run
+    random_seed=random_seed+fold_idx,
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/train.py", line 130, in train
+    device=device
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/model.py", line 24, in __init__
+    self.tsn.to(device)
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env2/lib/python3.6/site-packages/torch/nn/modules/module.py", line 607, in to
+    return self._apply(convert)
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env2/lib/python3.6/site-packages/torch/nn/modules/module.py", line 354, in _apply
+    module._apply(fn)
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env2/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 161, in _apply
+    self.flatten_parameters()
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env2/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 151, in flatten_parameters
+    self.batch_first, bool(self.bidirectional))
+RuntimeError: CUDA error: no kernel image is available for execution on the device

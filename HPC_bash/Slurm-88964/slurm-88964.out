@@ -1,0 +1,17 @@
+tensor([[-0.2193,  0.2223, -1.4878,  0.8753, -0.6740,  0.2011,  0.5467,  0.8277,
+         -0.0872,  0.7820],
+        [-0.6728,  0.4192, -0.0408, -0.7897, -0.9790,  1.2011, -0.1463,  0.0656,
+          1.0260, -0.3880],
+        [-0.6648, -0.1170, -0.7402,  0.2361, -0.7865, -0.3867,  0.7539, -0.1825,
+         -0.4307,  1.0553],
+        [ 0.6824, -0.7038, -0.4612, -0.4455, -1.1572,  0.0280,  0.2908,  0.7203,
+         -0.1299,  0.4663],
+        [ 0.2992, -0.5957, -0.8895,  0.2816, -0.2277,  0.7858,  1.0136,  0.0760,
+         -0.0849,  1.1378]], device='cuda:0', grad_fn=<AddmmBackward0>)
+Checking CUDA status...
+CUDA available: True
+Number of GPUs: 1
+GPU 0: NVIDIA L40S
+Memory Allocated: 0 bytes
+Memory Reserved: 0 bytes
+Current working directory: /cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/HPC_bash

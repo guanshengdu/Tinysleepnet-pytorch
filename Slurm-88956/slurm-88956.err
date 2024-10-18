@@ -1,0 +1,14 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "gcc/9.4.0-pe5.34"
+   Try: "module spider gcc/9.4.0-pe5.34" to see how to load the module(s).
+
+
+
+/cm/local/apps/slurm/var/spool/job88956/slurm_script: line 17: activate: No such file or directory
+Traceback (most recent call last):
+  File "trainer.py", line 8, in <module>
+    from train import train
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/train.py", line 5, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+/cm/local/apps/slurm/var/spool/job88956/slurm_script: line 22: conda: command not found

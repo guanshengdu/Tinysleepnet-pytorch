@@ -1,0 +1,38 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "gcc/9.4.0-pe5.34"
+   Try: "module spider gcc/9.4.0-pe5.34" to see how to load the module(s).
+
+
+
+Traceback (most recent call last):
+  File "trainer.py", line 8, in <module>
+    from train import train
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/train.py", line 10, in <module>
+    from model import Model
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/model.py", line 9, in <module>
+    from tensorboardX import SummaryWriter
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/__init__.py", line 5, in <module>
+    from .torchvis import TorchVis
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/torchvis.py", line 11, in <module>
+    from .writer import SummaryWriter
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/writer.py", line 18, in <module>
+    from .event_file_writer import EventFileWriter
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/event_file_writer.py", line 28, in <module>
+    from .proto import event_pb2
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/proto/event_pb2.py", line 16, in <module>
+    from tensorboardX.proto import summary_pb2 as tensorboardX_dot_proto_dot_summary__pb2
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/proto/summary_pb2.py", line 16, in <module>
+    from tensorboardX.proto import tensor_pb2 as tensorboardX_dot_proto_dot_tensor__pb2
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/proto/tensor_pb2.py", line 16, in <module>
+    from tensorboardX.proto import resource_handle_pb2 as tensorboardX_dot_proto_dot_resource__handle__pb2
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/tensorboardX/proto/resource_handle_pb2.py", line 36, in <module>
+    _descriptor.FieldDescriptor(
+  File "/cfs/earth/scratch/dugua001/.conda/envs/tinysleepnet_env4/lib/python3.8/site-packages/google/protobuf/descriptor.py", line 621, in __new__
+    _message.Message._CheckCalledFromGeneratedFile()
+TypeError: Descriptors cannot be created directly.
+If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc >= 3.19.0.
+If you cannot immediately regenerate your protos, some other possible workarounds are:
+ 1. Downgrade the protobuf package to 3.20.x or lower.
+ 2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+
+More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates

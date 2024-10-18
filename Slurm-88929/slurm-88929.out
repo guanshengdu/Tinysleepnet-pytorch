@@ -1,0 +1,1 @@
+args is : Namespace(db='sleepedf', from_fold=0, gpu=0, n_epochs=200, random_seed=42, suffix='', test_batch_size=15, test_seq_len=20, to_fold=19)

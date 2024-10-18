@@ -119,7 +119,11 @@ def train(
     logger.info(f'  Weighted cross entropy: {config["class_weights"]}')
 
     # Create a model
-    device = torch.device("cuda:{}".format(args.gpu) if torch.cuda.is_available() else "cpu")
+
+    if args.gpu == -1:
+        device = torch.device("cpu")
+    else:
+        device = torch.device("cuda:{}".format(args.gpu) if torch.cuda.is_available() else "cpu")
     logger.info(f'using device {args.gpu}')
     model = Model(
         config=config,

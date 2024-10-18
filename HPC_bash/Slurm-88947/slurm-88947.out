@@ -1,0 +1,7 @@
+Checking CUDA status...
+CUDA available: True
+Number of GPUs: 1
+GPU 0: NVIDIA L40S
+Memory Allocated: 0 bytes
+Memory Reserved: 0 bytes
+Current working directory: /cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/HPC_bash
