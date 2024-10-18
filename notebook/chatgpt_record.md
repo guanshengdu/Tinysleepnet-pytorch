@@ -64,6 +64,106 @@ Finally, trace the source of `train_x` to ensure that it is being correctly gene
 
 These steps should help you resolve the inhomogeneous shape issue and get `np.copy()` working properly.
 
+## Jupyter Notebook in HPC
+
+Yes, you're correct. On most HPC systems, the **login node** is separate from the **compute nodes**, and when you start a Jupyter Notebook session on the HPC, the notebook kernel typically runs on the login node by default. This is not ideal for debugging or running resource-intensive tasks because:
+
+- The **login node** is intended for lightweight tasks such as editing scripts, submitting jobs, or compiling code.
+- **Compute nodes** are designed for heavy computational tasks such as training machine learning models or running simulations.
+
+If you're running your Jupyter Notebook kernel on the login node, you won't be utilizing the powerful compute nodes that are available on the cluster, and you could potentially overload the login node, which is shared with other users.
+
+### How to Debug on Compute Nodes Using Jupyter on HPC
+
+To debug properly on the compute nodes through a Jupyter Notebook on an HPC, you need to launch the Jupyter Notebook **on a compute node**. This can be done by submitting an interactive job that launches the Jupyter Notebook on a compute node.
+
+Here’s how you can set it up:
+
+### Steps to Run Jupyter Notebook on a Compute Node:
+
+1. **Request Resources with `salloc` or `sbatch`**:
+   You need to request resources on a compute node interactively or by submitting a job, depending on the policy of your HPC. You can use `salloc` for interactive jobs or `sbatch` if you prefer batch submission.
+
+   **Using `salloc` for an interactive session**:
+   ```bash
+   salloc --nodes=1 --ntasks=1 --cpus-per-task=4 --gres=gpu:1 --time=02:00:00 --partition=your_partition
+   ```
+
+   This will allocate a compute node for your interactive session.
+
+2. **Start Jupyter Notebook on the Compute Node**:
+   Once the compute node is allocated, you can start the Jupyter Notebook server on that node. You might want to specify the port on which Jupyter will run (default is `8888`).
+
+   **Start Jupyter Notebook on the compute node**:
+   ```bash
+   module load python/3.8  # Or any other Python module you need
+   module load cuda/11.6   # If using GPU
+
+   jupyter notebook --no-browser --port=8888
+   ```
+
+3. **Set Up Port Forwarding (SSH Tunnel)**:
+   Since Jupyter Notebook is running on the compute node and you’re accessing it remotely, you need to forward the port from the HPC compute node to your local machine using SSH.
+
+   Open a new terminal on your **local machine** and set up an SSH tunnel:
+
+   ```bash
+   ssh -L 8888:compute-node-address:8888 yourusername@hpc-address
+   ```
+
+   Replace:
+   - `compute-node-address` with the actual address or hostname of the compute node (you can find this in the output of `salloc` or `scontrol show job`).
+   - `yourusername` with your HPC username.
+   - `hpc-address` with the login node's address.
+
+4. **Access Jupyter Notebook from Your Browser**:
+   After forwarding the port, open your browser on your local machine and navigate to:
+
+   ```
+   http://localhost:8888
+   ```
+
+   You will be prompted to enter the token provided in the terminal where you launched the Jupyter server.
+
+5. **Run Heavy Computations on the Compute Node**:
+   Now, your Jupyter Notebook is running on the **compute node**, and any code you execute will utilize the resources of that node (such as the CPU cores, memory, and GPUs) rather than the login node.
+
+### Example Workflow:
+
+1. **Submit an Interactive Job**:
+   ```bash
+   salloc --nodes=1 --ntasks=1 --cpus-per-task=4 --gres=gpu:1 --time=02:00:00 --partition=your_partition
+   ```
+
+2. **Start Jupyter Notebook** on the allocated compute node:
+   ```bash
+   module load python/3.8
+   module load cuda/11.6
+   jupyter notebook --no-browser --port=8888
+   ```
+
+3. **On your local machine**, set up the SSH tunnel:
+   ```bash
+   ssh -L 8888:compute-node-address:8888 yourusername@hpc-address
+   ```
+
+4. **Open Jupyter Notebook** on your browser:
+   ```
+   http://localhost:8888
+   ```
+
+Now, you have a fully interactive Jupyter Notebook session running on a compute node of the HPC, where you can debug, run your heavy computations, and utilize the allocated resources properly.
+
+### Advantages:
+- This allows you to **debug in real time** on a compute node, utilizing the resources available on the node.
+- You can still use the familiar Jupyter Notebook environment for debugging, but all computations will take place on the **compute node**, not on the login node.
+
+### Best Practices:
+- **Avoid running Jupyter on the login node**: This can overload the shared resources and is usually not allowed by HPC policies.
+- **Allocate sufficient resources**: Make sure to allocate the required CPUs, memory, and GPUs for your computations when starting the Jupyter Notebook on a compute node.
+- **Check the job limits**: Different HPC systems might have time and resource limits for interactive jobs or debugging queues. Make sure you adhere to those limits.
+
+By running Jupyter on a compute node, you can leverage the HPC's resources while debugging or working interactively in Jupyter.
 
 
 ## Using HPC, from ChatGPT

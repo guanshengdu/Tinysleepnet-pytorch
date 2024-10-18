@@ -22,6 +22,8 @@ def train(
     restart=False,
     random_seed=42,
 ):
+    
+    
     spec = importlib.util.spec_from_file_location("*", config_file)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)

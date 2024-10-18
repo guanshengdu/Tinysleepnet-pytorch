@@ -178,7 +178,7 @@ Use `test_trainer.sh` to run the `trainer.py` in the HPC system.
 
 And it returns the following error:
 
-```
+```bash
 Traceback (most recent call last):
   File "trainer.py", line 58, in <module>
     run(
@@ -191,3 +191,5 @@ Traceback (most recent call last):
     return array(a, order=order, subok=subok, copy=True)
 ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (33,) + inhomogeneous part.
 ```
+
+

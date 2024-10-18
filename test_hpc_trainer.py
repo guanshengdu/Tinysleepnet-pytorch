@@ -10,13 +10,11 @@ from train import train
 # os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 
-
-
 def run(args, db, gpu, from_fold, to_fold, suffix='', random_seed=42):
     # Set GPU visible
 
     # Config file
-    config_file = os.path.join('config', f'{db}.py')
+    config_file = os.path.join('./config', f'{db}.py')
     spec = importlib.util.spec_from_file_location("*", config_file)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
@@ -44,6 +42,17 @@ def run(args, db, gpu, from_fold, to_fold, suffix='', random_seed=42):
 
 
 if __name__ == '__main__':
+
+    # Save the current working directory
+    # cwd = os.getcwd()
+
+    # Set the current working directory
+    os.chdir('/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/')
+
+    # Verify the current working directory
+    print(f"Current working directory: {os.getcwd()}")
+
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", type=str, required=True)
     parser.add_argument("--gpu", type=int, required=True)
@@ -54,7 +63,7 @@ if __name__ == '__main__':
     parser.add_argument("--test_seq_len", type=int, default=20)
     parser.add_argument("--test_batch_size", type=int, default=15)
     parser.add_argument("--n_epochs", type=int, default=200)
-    args = parser.parse_args()
+    # args = parser.parse_args()
 
     print(f"args is : {args}")
 
@@ -67,3 +76,15 @@ if __name__ == '__main__':
         suffix=args.suffix,
         random_seed=args.random_seed,
     )
+    """
+    args = "Namespace(db='sleepedf', from_fold=0, gpu=0, n_epochs=200, random_seed=42, suffix='', test_batch_size=15, test_seq_len=20, to_fold=19)"
+    
+    run(args = "Namespace(db='sleepedf', from_fold=0, gpu=0, n_epochs=200, random_seed=42, suffix='', test_batch_size=15, test_seq_len=20, to_fold=19)",
+        db = "sleepedf",
+        gpu = 0,
+        from_fold = 0,
+        to_fold = 19,
+        suffix = "",
+        random_seed = 42,
+    )
+    print(f"args is : {args}")
