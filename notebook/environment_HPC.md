@@ -192,4 +192,19 @@ Traceback (most recent call last):
 ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (33,) + inhomogeneous part.
 ```
 
+```bash
+Traceback (most recent call last):
+  File "trainer.py", line 61, in <module>
+    run(
+  File "trainer.py", line 29, in run
+    train(
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/train.py", line 181, in train
+    train_outs = model.train_with_dataloader(aug_minibatch_fn)  # 只使用增强后的数据进行训练， 每个epoch进行一次数据增强
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/model.py", line 67, in train_with_dataloader
+    for x, y, w, sl, re in minibatches:
+  File "/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/minibatching.py", line 86, in iterate_batch_multiple_seq_minibatches
+    seq_inputs = np.asarray(inputs)[seq_idx[start_idx:end_idx]]
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (33,) + inhomogeneous part.
+```
+
 
