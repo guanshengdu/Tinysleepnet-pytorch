@@ -12,6 +12,8 @@ from minibatching import iterate_batch_multiple_seq_minibatches
 from utils import print_n_samples_each_class, load_seq_ids
 from logger import get_logger
 
+from types import SimpleNamespace
+
 
 def train(
     args,
@@ -22,8 +24,8 @@ def train(
     restart=False,
     random_seed=42,
 ):
-    
-    
+    print("Training...")
+
     spec = importlib.util.spec_from_file_location("*", config_file)
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
@@ -152,8 +154,10 @@ def train(
         shuffle_idx = np.random.permutation(np.arange(len(train_x)))  # shuffle every epoch is good for generalization
         # Create augmented data
         percent = 0.1
-        aug_train_x = np.copy(train_x)
-        aug_train_y = np.copy(train_y)
+        # aug_train_x = np.copy(train_x)
+        aug_train_x = [np.copy(x) for x in train_x]
+        # aug_train_y = np.copy(train_y)
+        aug_train_y = [np.copy(y) for y in train_y]
         for i in range(len(aug_train_x)):
             # Shift signals horizontally
             offset = np.random.uniform(-percent, percent) * aug_train_x[i].shape[1]
@@ -261,6 +265,8 @@ def train(
 
 
 if __name__ == "__main__":
+
+    print("This will not be printed when imported")
     parser = argparse.ArgumentParser()
     parser.add_argument("--config_file", type=str, required=True)
     parser.add_argument("--fold_idx", type=int, required=True)
@@ -271,6 +277,20 @@ if __name__ == "__main__":
     parser.add_argument("--random_seed", type=int, default=42)
     parser.set_defaults(restart=False)
     args = parser.parse_args()
+
+    """
+    args = SimpleNamespace(
+        db="sleepedf",
+        gpu=0,
+        from_fold=0,
+        to_fold=19,
+        suffix="",
+        random_seed=42,
+        test_seq_len=20,
+        test_batch_size=15,
+        n_epochs=200,
+    )
+    """
 
     print(f"args in train.py is : {args}")
 

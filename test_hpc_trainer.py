@@ -5,10 +5,11 @@ import importlib
 import os
 # import tensorflow as tf
 
-from train import train
+from test_hpc_train import train
 # import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
+from types import SimpleNamespace
 
 def run(args, db, gpu, from_fold, to_fold, suffix='', random_seed=42):
     # Set GPU visible
@@ -20,7 +21,7 @@ def run(args, db, gpu, from_fold, to_fold, suffix='', random_seed=42):
     spec.loader.exec_module(config)
 
     # Output directory
-    output_dir = f'out_{db}{suffix}'
+    output_dir = f'./out_{db}{suffix}'
 
     assert from_fold <= to_fold
     assert to_fold < config.params['n_folds']
@@ -63,7 +64,20 @@ if __name__ == '__main__':
     parser.add_argument("--test_seq_len", type=int, default=20)
     parser.add_argument("--test_batch_size", type=int, default=15)
     parser.add_argument("--n_epochs", type=int, default=200)
-    # args = parser.parse_args()
+    args = parser.parse_args()
+    """
+
+    args = SimpleNamespace(
+        db="sleepedf",
+        gpu=0,
+        from_fold=0,
+        to_fold=19,
+        suffix="",
+        random_seed=42,
+        test_seq_len=20,
+        test_batch_size=15,
+        n_epochs=200,
+    )
 
     print(f"args is : {args}")
 
@@ -76,15 +90,4 @@ if __name__ == '__main__':
         suffix=args.suffix,
         random_seed=args.random_seed,
     )
-    """
-    args = "Namespace(db='sleepedf', from_fold=0, gpu=0, n_epochs=200, random_seed=42, suffix='', test_batch_size=15, test_seq_len=20, to_fold=19)"
-    
-    run(args = "Namespace(db='sleepedf', from_fold=0, gpu=0, n_epochs=200, random_seed=42, suffix='', test_batch_size=15, test_seq_len=20, to_fold=19)",
-        db = "sleepedf",
-        gpu = 0,
-        from_fold = 0,
-        to_fold = 19,
-        suffix = "",
-        random_seed = 42,
-    )
-    print(f"args is : {args}")
+

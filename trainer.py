@@ -41,6 +41,9 @@ def run(args, db, gpu, from_fold, to_fold, suffix='', random_seed=42):
 
 
 if __name__ == '__main__':
+    # Set the current working directory
+    os.chdir("/cfs/earth/scratch/dugua001/Tinysleepnet-pytorch/")
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", type=str, required=True)
     parser.add_argument("--gpu", type=int, required=True)

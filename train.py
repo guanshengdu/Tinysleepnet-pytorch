@@ -124,6 +124,8 @@ def train(
         device = torch.device("cpu")
     else:
         device = torch.device("cuda:{}".format(args.gpu) if torch.cuda.is_available() else "cpu")
+    print(f"device is : {device}")    
+    
     logger.info(f'using device {args.gpu}')
     model = Model(
         config=config,
@@ -149,8 +151,12 @@ def train(
         shuffle_idx = np.random.permutation(np.arange(len(train_x)))  # shuffle every epoch is good for generalization
         # Create augmented data
         percent = 0.1
-        aug_train_x = np.copy(train_x)
-        aug_train_y = np.copy(train_y)
+
+        # aug_train_x = np.copy(train_x)
+        aug_train_x = [np.copy(x) for x in train_x]
+        # aug_train_y = np.copy(train_y)
+        aug_train_y = [np.copy(y) for y in train_y]
+
         for i in range(len(aug_train_x)):
             # Shift signals horizontally
             offset = np.random.uniform(-percent, percent) * aug_train_x[i].shape[1]
